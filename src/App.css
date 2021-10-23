@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.navBar {
+  display: flex;
+  justify-content: center;
+  background-color: #232c36;
+  height: 80px;
+  white-space: nowrap;
+  color: white;
+}
