@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { Link, Redirect } from 'react'
+import { Redirect } from 'react-router-dom'
 
 export default class CommentActions extends Component {
     constructor(props) {
         super(props);
         this.state={
             deleted: false,
-            open: false
+            edited: false
         }
     }
 
@@ -26,13 +26,24 @@ export default class CommentActions extends Component {
         })
     }
 
+    edited = () => {
+        this.setState({edited: true})
+    }
+
     render() {
-        if (this.state.deleted){
+        console.log(this.state)
+        if (this.state.deleted) {
             return <Redirect to='/blog'/>
+        } else if (this.state.edited) {
+            return <Redirect to='/edit'/>
         }
         return (
             <div>
-                <button>Edit</button>
+                <button type="button" onClick={() => {
+                    this.edited()
+                    this.props.setComment(this.props.currentComment) 
+                }}
+            >Edit</button>
                 <button type="button" onClick={ () => this.deleteComment(this.props.currentComment)}>Delete</button>
             </div>
         )

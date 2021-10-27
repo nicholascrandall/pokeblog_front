@@ -83,7 +83,7 @@ export default class BlogShow extends Component {
 
                             <CommentActions
                                 baseURL={this.props.baseURL}
-                                currentComment={this.props.currentComment}
+                                currentComment={comment}
                                 setComment={this.props.setComment}
                             />
                                 

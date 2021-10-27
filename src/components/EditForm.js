@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import {Form} from 'semantic-ui-react'
+import { Redirect } from 'react-router-dom'
 
 export default class EditForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            content: this.props.currentComment.content
+            content: this.props.currentComment.content,
+            edited: false
         }
     }
 
@@ -26,12 +28,17 @@ export default class EditForm extends Component {
         }).then(response => response.json())
         .then(data => {
             if(data.status === 200) {
-                this.props.editUserInfo(data);
+                this.setState({
+                    edited: true
+                })
             }
         })
     }
     
     render() {  
+        if (this.state.edited){
+            return <Redirect to='/blog'/>
+        }
         return(
             <Form onSubmit={event =>this.handleSubmit(event)}>
                 <Form.TextArea id='content' name='content' value={this.state.content} onChange={event =>this.handleChange(event)}/>

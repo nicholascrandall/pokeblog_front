@@ -7,7 +7,6 @@ import BlogForm from './components/BlogForm'
 import EditForm from './components/EditForm'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-
 let baseURL = '' 
 if (process.env.NODE_ENV === 'development'){
   baseURL = process.env.REACT_APP_LOCAL_URL
@@ -36,12 +35,13 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <div className="App">
         <BrowserRouter>
           <Switch>
             {/* Comment Edit Page */}
-            <Route path="edit">
+            <Route path="/edit">
               <NavBar />
               <EditForm baseURL={baseURL} currentComment={this.state.currentComment} />
             </Route>
