@@ -9,5 +9,10 @@ Included in each blog is an about me section, an avatar, a list of currently cau
 
 ## Running Locally
 To run PokeBlog Locally, you can fork this repository and then clone it.
+npm i or yarn install to download all necessary node packages.
 
 You should also use our [PokeBlog API](https://github.com/nicholascrandall/PokeBlog_API)
+
+## Technology Used
+FrontEnd: node.js, React
+BackEnd: node.js, yarn, express, mongoDB
