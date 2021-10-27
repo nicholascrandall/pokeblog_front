@@ -29,7 +29,7 @@ class App extends Component {
     })
   }
 
-  editComment = (comment) => {
+  setComment = (comment) => {
     this.setState({
       currentComment: comment
     })
@@ -49,13 +49,13 @@ class App extends Component {
             {/* Blog Show page */}
             <Route path="/blog">
               <NavBar />
-              <BlogShow baseURL={baseURL} currentBlog={this.state.currentBlog} />
+              <BlogShow baseURL={baseURL} currentBlog={this.state.currentBlog} setComment={this.setComment} currentComment={this.state.currentComment} />
             </Route>
 
             {/* Blog Form Page */}
             <Route path="/form">
               <NavBar />
-              <BlogForm baseURL={baseURL} editComment={this.state.editComment} />
+              <BlogForm baseURL={baseURL} />
             </Route>
 
             {/* Home Page - KEEP AT BOTTOM */}

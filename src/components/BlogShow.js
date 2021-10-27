@@ -13,12 +13,6 @@ export default class BlogShow extends Component {
         }
     }
 
-    setOpen = (bool) => {
-        this.setState({
-            open: bool
-        })
-    }
-
     getComments() {
         const url = this.props.baseURL + '/comment/' + this.props.currentBlog._id
         fetch(url, {
@@ -90,7 +84,7 @@ export default class BlogShow extends Component {
                             <CommentActions
                                 baseURL={this.props.baseURL}
                                 currentComment={this.props.currentComment}
-                                editComment={this.props.editComment}
+                                setComment={this.props.setComment}
                             />
                                 
                         </Comment>
