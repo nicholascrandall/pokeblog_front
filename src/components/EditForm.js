@@ -38,12 +38,15 @@ export default class EditForm extends Component {
             return <Redirect to='/blog'/>
         }
         return(
+            <>
+            <h2>Comment Editing Form</h2>
             <Form onSubmit={event =>this.handleSubmit(event)}>
                 <Form.TextArea id='content' name='content' value={this.state.content} onChange={event =>this.handleChange(event)}/>
                 <Form.Button type='submit' color='teal' fluid size='large' style={{marginTop:'20px'}} >
                     Submit Edits
                 </Form.Button>
             </Form>
+            </>
         )
     }
 }

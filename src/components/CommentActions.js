@@ -18,11 +18,7 @@ export default class CommentActions extends Component {
             credentials: 'include'
         }).then(response => response.json())
         .then(data => {
-            if(data.status === 200){
-                this.setState({
-                    deleted: true
-                })
-            }
+            this.props.deletedComment()
         })
     }
 
@@ -32,9 +28,7 @@ export default class CommentActions extends Component {
 
     render() {
         console.log(this.state)
-        if (this.state.deleted) {
-            return <Redirect to='/blog'/>
-        } else if (this.state.edited) {
+        if (this.state.edited) {
             return <Redirect to='/edit'/>
         }
         return (

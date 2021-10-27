@@ -43,6 +43,15 @@ export default class BlogShow extends Component {
         }
     }
 
+    deletedComment = (comment) => {
+        const copyComments = [...this.state.comments]
+        const updatedComments = copyComments.filter(com => com === comment)
+        console.log(updatedComments)
+        this.setState({
+            comments: updatedComments
+        })
+    }
+
     render() {
         if(!this.props.currentBlog){
             return <Redirect to='/' />
@@ -85,6 +94,7 @@ export default class BlogShow extends Component {
                                 baseURL={this.props.baseURL}
                                 currentComment={comment}
                                 setComment={this.props.setComment}
+                                deletedComment={this.deletedComment}
                             />
                                 
                         </Comment>
