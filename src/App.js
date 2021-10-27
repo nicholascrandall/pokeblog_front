@@ -42,7 +42,7 @@ class App extends Component {
             {/* Blog Form Page */}
             <Route path="/form">
               <NavBar />
-              <BlogForm />
+              <BlogForm baseURL={baseURL} />
             </Route>
 
             {/* Home Page - KEEP AT BOTTOM */}

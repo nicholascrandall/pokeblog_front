@@ -5,7 +5,7 @@ export default class BlogForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            about: "About Me"
         }
     }
 
@@ -14,6 +14,18 @@ export default class BlogForm extends Component {
             [event.target.id]: event.target.value
         })
     }
+
+    handleCaughtChange = (event) => {
+        this.setState({
+            currentPokemon: event.target.value
+        })
+    }
+
+    handleAddition = (event, { value }) => {
+        this.setState((prevState) => ({
+            caughtPokemon: [{ text: value, value }, ...prevState.caughtPokemon],
+        }))
+      }
 
     handleSubmit (event) {
         event.preventDefault()
@@ -28,7 +40,7 @@ export default class BlogForm extends Component {
 
         fetch(url, {
             method: 'POST',
-            body: JSON.stringify({FormData: this.state.FormData}),
+            body: JSON.stringify(blog),
             headers: {'Content-Type': 'application/json'},
             mode: 'cors',
             credentials: "include"
@@ -37,7 +49,7 @@ export default class BlogForm extends Component {
             this.setState({
                 created: true
             })
-        })
+        }).catch (error => console.error({'Error': error}))
     }
 
     render() {
@@ -45,9 +57,23 @@ export default class BlogForm extends Component {
         if (this.state.created) {
             return <Redirect to='/' />
         }
+
         return (
             <div className="blogForm">
                 <h3>Blog form page</h3>
+                <form onSubmit={this.handleSubmit}>
+                    <label htmlFor="name">Name: </label>
+                    <input type="text" id="name" name="name" onChange={(event)=>this.handleChange(event)} />
+                    <br />
+
+                    <input type="text" id="caughtPokemon" name="caughtPokemon" onChange={(event)=>this.handleCaughtChange(event)} placeholder="Add a caught pokemon to your list" />
+                    <button>Add this Pokemon</button>
+                    <br />
+                    
+                    <input type="submit" value="Submit" />
+
+                    
+                </form>
             </div>
         )
     }
