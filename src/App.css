@@ -63,3 +63,12 @@ img {
 a:visited, a:link {
   color: white;
 }
+
+li {
+  list-style-type: none;
+}
+
+.blogSubmit {
+  display: block;
+  margin: 30px auto 0 auto;
+}

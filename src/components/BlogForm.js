@@ -30,7 +30,7 @@ export default class BlogForm extends Component {
           }))
       }
 
-    handleSubmit (event) {
+    handleSubmit = (event) => {
         event.preventDefault()
 
         const url = this.props.baseURL + '/blog'
@@ -56,7 +56,6 @@ export default class BlogForm extends Component {
     }
 
     render() {
-        console.log(this.state)
         if (this.state.created) {
             return <Redirect to='/' />
         }
@@ -65,15 +64,24 @@ export default class BlogForm extends Component {
             <div className="blogForm">
                 <h3>Blog form page</h3>
                 <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="name">Name: </label>
+                    <label htmlFor="name">Your Name: </label>
                     <input type="text" id="name" name="name" onChange={(event)=>this.handleChange(event)} />
-                    <br />
+                    
+                    <p>Pokemon caught so far: </p>
+                    {this.state.caughtPokemon.length > 0 &&
+                        <ul>
+                            {this.state.caughtPokemon.map((pokemon, index) => {
+                                return <li key={index}>{pokemon}</li>
+                            })
+                            }
+                        </ul>
+                    
+                    }
 
-                    <input type="text" value={this.state.currentPokemon} id="caughtPokemon" name="caughtPokemon" onChange={(event)=>this.handleCaughtChange(event)} placeholder="Add a caught pokemon to your list" />
+                    <input type="text" value={this.state.currentPokemon} id="caughtPokemon" name="caughtPokemon" onChange={(event)=>this.handleCaughtChange(event)} placeholder="Pokemon Name" />
                     <button type="button" onClick={ () => this.handleAddition(this.state.currentPokemon)}>Add this Pokemon</button>
-                    <br />
 
-                    <input type="submit" value="Submit" />
+                    <input className="blogSubmit" type="submit" value="Create Your Blog!" />
 
                     
                 </form>
