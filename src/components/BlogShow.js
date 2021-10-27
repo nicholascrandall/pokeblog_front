@@ -87,6 +87,9 @@ export default class BlogShow extends Component {
                         </Comment>
                     })}
                 </Comment.Group>
+                
+                <CommentForm blogID={this.props.currentBlog._id} baseURL = {this.props.baseURL} addComment = {this.addComment} />
+                
             </div>
         )
     }
