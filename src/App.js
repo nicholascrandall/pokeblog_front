@@ -2,7 +2,9 @@ import './App.css';
 import React, { Component } from 'react'
 import NavBar from './components/NavBar'
 import Blogs from './components/Blogs'
+import BlogShow from './components/BlogShow'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 
 let baseURL = '' 
 if (process.env.NODE_ENV === 'development'){
@@ -33,7 +35,7 @@ class App extends Component {
             {/* Blog Show page */}
             <Route path="/blog">
               <NavBar />
-              <h2>BLOG SHOW PAGE</h2>
+              <BlogShow baseURL={baseURL} currentBlog={this.state.currentBlog} />
             </Route>
 
             {/* Home Page - KEEP AT BOTTOM */}
