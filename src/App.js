@@ -2,6 +2,7 @@ import './App.css';
 import React, { Component } from 'react'
 import NavBar from './components/NavBar'
 import Blogs from './components/Blogs'
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 let baseURL = '' 
 if (process.env.NODE_ENV === 'development'){
@@ -21,14 +22,25 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar />
-        <Blogs baseURL={baseURL} />
+        <BrowserRouter>
+          <Switch>
+            {/* Blog Show page */}
+            <Route path="/blog">
+              <NavBar />
+              <h2>BLOG SHOW PAGE</h2>
+            </Route>
+
+            {/* Home Page - KEEP AT BOTTOM */}
+            <Route path="/">
+              <NavBar />
+              <Blogs baseURL={baseURL} />
+            </Route>
+          </Switch>
+        </BrowserRouter>
       </div>
     )
   }
   
 }
-
-
 
 export default App;
