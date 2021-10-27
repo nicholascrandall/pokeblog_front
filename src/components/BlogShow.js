@@ -6,8 +6,14 @@ export default class BlogShow extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            open: false
         }
+    }
+
+    setOpen = (bool) => {
+        this.setState({
+            open: bool
+        })
     }
 
     render() {
@@ -28,6 +34,7 @@ export default class BlogShow extends Component {
             <div className="blogshow">
                 <h1>{this.props.currentBlog.name}'s PokeBlog</h1>
                 <h3>{this.props.currentBlog.about}</h3>
+
                 <img src={avatar} alt="avatar" />
                 <h3>Pokemon I've caught so far: {capitalize()} </h3>
             </div>

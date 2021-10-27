@@ -5,7 +5,7 @@ export default class BlogForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            about: "About Me",
+            about: "",
             currentPokemon: "",
             caughtPokemon: []
         }
@@ -66,6 +66,10 @@ export default class BlogForm extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor="name">Your Name: </label>
                     <input type="text" id="name" name="name" onChange={(event)=>this.handleChange(event)} />
+                    <br />
+                    <label htmlFor="about">About Me: </label>
+                    <br />
+                    <textarea rows="4" cols="50" id="about" name="about" onChange={(event)=>this.handleChange(event)} />
                     
                     <p>Pokemon caught so far: </p>
                     {this.state.caughtPokemon.length > 0 &&
