@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import NavBar from './components/NavBar'
 import Blogs from './components/Blogs'
 import BlogShow from './components/BlogShow'
+import BlogForm from './components/BlogForm'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 
@@ -36,6 +37,12 @@ class App extends Component {
             <Route path="/blog">
               <NavBar />
               <BlogShow baseURL={baseURL} currentBlog={this.state.currentBlog} />
+            </Route>
+
+            {/* Blog Form Page */}
+            <Route path="/form">
+              <NavBar />
+              <BlogForm />
             </Route>
 
             {/* Home Page - KEEP AT BOTTOM */}

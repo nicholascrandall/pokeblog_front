@@ -13,7 +13,11 @@ export default class NavBar extends Component {
         return (
             <div className="navBar">
                 <Link to="/">
-                    <h2>PokeBlog</h2>
+                    <h2 className="navItem">Home</h2>
+                </Link>
+                
+                <Link to="/form">
+                    <h2 className="navItem">Create your own PokeBlog!</h2>
                 </Link>
             </div>
         )
