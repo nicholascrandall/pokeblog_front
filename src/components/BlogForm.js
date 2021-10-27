@@ -5,7 +5,9 @@ export default class BlogForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            about: "About Me"
+            about: "About Me",
+            currentPokemon: "",
+            caughtPokemon: []
         }
     }
 
@@ -21,10 +23,11 @@ export default class BlogForm extends Component {
         })
     }
 
-    handleAddition = (event, { value }) => {
-        this.setState((prevState) => ({
-            caughtPokemon: [{ text: value, value }, ...prevState.caughtPokemon],
-        }))
+    handleAddition = (event) => {
+        this.setState(prevState => ({
+            caughtPokemon: [...prevState.caughtPokemon, event],
+            currentPokemon: ""
+          }))
       }
 
     handleSubmit (event) {
@@ -66,10 +69,10 @@ export default class BlogForm extends Component {
                     <input type="text" id="name" name="name" onChange={(event)=>this.handleChange(event)} />
                     <br />
 
-                    <input type="text" id="caughtPokemon" name="caughtPokemon" onChange={(event)=>this.handleCaughtChange(event)} placeholder="Add a caught pokemon to your list" />
-                    <button>Add this Pokemon</button>
+                    <input type="text" value={this.state.currentPokemon} id="caughtPokemon" name="caughtPokemon" onChange={(event)=>this.handleCaughtChange(event)} placeholder="Add a caught pokemon to your list" />
+                    <button type="button" onClick={ () => this.handleAddition(this.state.currentPokemon)}>Add this Pokemon</button>
                     <br />
-                    
+
                     <input type="submit" value="Submit" />
 
                     
