@@ -50,6 +50,12 @@ img {
   max-height: 200px;
 }
 
+.blogcard {
+  cursor: pointer;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
 a:visited {
   color: white;
 }
