@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import avatar from "../images/Pikachu-color-model-publicity-cel.jpg"
 import { Comment, Header } from 'semantic-ui-react'
 import CommentForm from './CommentForm'
+import CommentActions from './CommentActions'
 
 export default class BlogShow extends Component {
     constructor(props) {
@@ -27,6 +28,7 @@ export default class BlogShow extends Component {
         })
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             this.setState({
                 comments: data
             })
@@ -83,7 +85,14 @@ export default class BlogShow extends Component {
                                     <div>{t.toLocaleDateString() + ' ' + t.toLocaleTimeString()}</div>
                                 </Comment.Metadata>
                                 <Comment.Text>{comment.content}</Comment.Text>
-                                </Comment.Content>
+                            </Comment.Content>
+
+                            <CommentActions
+                                baseURL={this.props.baseURL}
+                                currentComment={this.props.currentComment}
+                                editComment={this.props.editComment}
+                            />
+                                
                         </Comment>
                     })}
                 </Comment.Group>

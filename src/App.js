@@ -4,6 +4,7 @@ import NavBar from './components/NavBar'
 import Blogs from './components/Blogs'
 import BlogShow from './components/BlogShow'
 import BlogForm from './components/BlogForm'
+import EditForm from './components/EditForm'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 
@@ -28,11 +29,23 @@ class App extends Component {
     })
   }
 
+  editComment = (comment) => {
+    this.setState({
+      currentComment: comment
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <BrowserRouter>
           <Switch>
+            {/* Comment Edit Page */}
+            <Route path="edit">
+              <NavBar />
+              <EditForm baseURL={baseURL} currentComment={this.state.currentComment} />
+            </Route>
+
             {/* Blog Show page */}
             <Route path="/blog">
               <NavBar />
@@ -42,7 +55,7 @@ class App extends Component {
             {/* Blog Form Page */}
             <Route path="/form">
               <NavBar />
-              <BlogForm baseURL={baseURL} />
+              <BlogForm baseURL={baseURL} editComment={this.state.editComment} />
             </Route>
 
             {/* Home Page - KEEP AT BOTTOM */}
