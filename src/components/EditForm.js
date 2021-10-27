@@ -27,15 +27,13 @@ export default class EditForm extends Component {
             credentials: 'include'
         }).then(response => response.json())
         .then(data => {
-            if(data.status === 200) {
-                this.setState({
-                    edited: true
-                })
-            }
+            this.setState({
+                edited: true
+            })
         })
     }
     
-    render() {  
+    render() { 
         if (this.state.edited){
             return <Redirect to='/blog'/>
         }
