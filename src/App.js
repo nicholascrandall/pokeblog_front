@@ -19,6 +19,12 @@ class App extends Component {
     }
   }
 
+  setBlog = (blog) => {
+    this.setState({
+      currentBlog: blog
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -33,7 +39,7 @@ class App extends Component {
             {/* Home Page - KEEP AT BOTTOM */}
             <Route path="/">
               <NavBar />
-              <Blogs baseURL={baseURL} />
+              <Blogs baseURL={baseURL} setBlog={this.setBlog} />
             </Route>
           </Switch>
         </BrowserRouter>

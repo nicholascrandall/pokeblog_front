@@ -20,7 +20,11 @@ export default class BlogCard extends Component {
         }
 
         return (
-            <div className="blogcard" onClick={() => {this.setClicked() }}>
+            <div className="blogcard" onClick={() => {
+            this.setClicked()
+            this.props.setBlog(this.props.blog) 
+            }}
+            >
                 <h2>{this.props.blog.name}'s PokeBlog</h2>
                 <img src={avatar} alt="avatar" />
             </div>

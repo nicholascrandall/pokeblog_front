@@ -35,11 +35,11 @@ export default class Blogs extends Component {
         if (this.state.blogs) {
             return (
                 <div className="blogs">
-                    <h1>Blog list</h1>
                     {this.state.blogs.map(blog => 
                         <BlogCard
                         key={blog.id}
                         blog={blog}
+                        setBlog={this.props.setBlog}
                         />
                     )}
                 </div>
