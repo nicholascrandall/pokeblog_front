@@ -30,11 +30,7 @@ export default class BlogShow extends Component {
     }
 
     addComment = (comment) => {
-        const copyComments = [...this.state.comments]
-        copyComments.push(comment)
-        this.setState({
-            comments: copyComments
-        })
+        this.getComments()
     }
 
     componentDidMount() {
@@ -44,12 +40,7 @@ export default class BlogShow extends Component {
     }
 
     deletedComment = (comment) => {
-        const copyComments = [...this.state.comments]
-        const updatedComments = copyComments.filter(com => com === comment)
-        console.log(updatedComments)
-        this.setState({
-            comments: updatedComments
-        })
+        this.getComments()
     }
 
     render() {
