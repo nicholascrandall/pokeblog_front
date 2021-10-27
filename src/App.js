@@ -13,7 +13,6 @@ if (process.env.NODE_ENV === 'development'){
 } else {
   baseURL = process.env.REACT_APP_PROD_URL
 }
-console.log(baseURL)
 
 class App extends Component {
   constructor(props) {
